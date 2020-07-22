@@ -7,7 +7,7 @@
   "url": "https://github.com/codebrewlab/nestjs-storage",
   "scripts": {
     "jest": "jest",
-    "build": "rimraf -rf dist && tsc -p tsconfig.json",
+    "build": "rimraf -rf dist && tsc -p tsconfig.lib.json",
     "lint": "eslint 'lib/**/*.ts' --fix",
     "prepublish:npm": "npm run build",
     "publish:npm": "npm publish --access public",
