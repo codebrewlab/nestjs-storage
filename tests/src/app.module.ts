@@ -6,13 +6,26 @@ import { StorageService } from '../../lib/storage.service';
 @Module({})
 export class AppModule {
   constructor(private readonly storageService: StorageService) {
-    console.log(storageService);
+    console.log('AppModule constructor', storageService);
   }
 
-  static withStorage(): DynamicModule {
+  static withLocalStorage(): DynamicModule {
+    console.log('withLocalStorage');
     return {
       module: AppModule,
-      imports: [StorageModule.forRoot()],
+      imports: [
+        StorageModule.forRoot({
+          default: 'local',
+          disks: {
+            local: {
+              driver: 'local',
+              config: {
+                root: process.cwd(),
+              },
+            },
+          },
+        }),
+      ],
     };
   }
 }
