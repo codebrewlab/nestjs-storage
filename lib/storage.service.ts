@@ -12,7 +12,7 @@ export class StorageService {
     this.storageManager = new StorageManager(options);
   }
 
-  getDisk<T extends Storage>(name?: string) {
+  getDisk<T extends Storage>(name?: string): T {
     return this.storageManager.disk<T>(name);
   }
 }
