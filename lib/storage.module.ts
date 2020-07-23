@@ -1,23 +1,25 @@
-import { DynamicModule, Module } from '@nestjs/common';
+import { DynamicModule, FactoryProvider, Module } from '@nestjs/common';
 import { StorageService } from './storage.service';
-import { StorageHostModule } from './storage-host.module';
 
-import { STORAGE_SERVICE_TOKEN } from './storage.constants';
+import { STORAGE_TOKEN } from './storage.constants';
+import { StorageModuleOptions } from './interfaces';
 
 @Module({
-  imports: [StorageHostModule],
-  providers: [
-    {
-      provide: StorageService,
-      useExisting: STORAGE_SERVICE_TOKEN,
-    },
-  ],
-  exports: [StorageHostModule, StorageService],
+  providers: [StorageService],
+  exports: [StorageService],
 })
 export class StorageModule {
-  static forRoot(): DynamicModule {
+  static forRoot(options: StorageModuleOptions): DynamicModule {
     return {
       module: StorageModule,
+      global: options.isGlobal,
+      providers: [
+        {
+          provide: STORAGE_TOKEN,
+          useValue: options,
+        },
+      ],
+      exports: [StorageService],
     };
   }
 }
