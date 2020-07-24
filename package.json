@@ -69,5 +69,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/codebrewlab/nestjs-storage"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
