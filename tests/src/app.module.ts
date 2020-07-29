@@ -1,16 +1,13 @@
 import { DynamicModule, Module } from '@nestjs/common';
 
-import { StorageModule } from '../../lib';
+import { DriverType, StorageModule } from '../../lib';
 import { StorageService } from '../../lib/storage.service';
 
 @Module({})
 export class AppModule {
-  constructor(private readonly storageService: StorageService) {
-    console.log('AppModule constructor', storageService);
-  }
+  constructor(private readonly storageService: StorageService) {}
 
   static withLocalStorage(): DynamicModule {
-    console.log('withLocalStorage');
     return {
       module: AppModule,
       imports: [
@@ -18,10 +15,27 @@ export class AppModule {
           default: 'local',
           disks: {
             local: {
-              driver: 'local',
+              driver: DriverType.LOCAL,
               config: {
                 root: process.cwd(),
               },
+            },
+          },
+        }),
+      ],
+    };
+  }
+
+  static withS3Storage(): DynamicModule {
+    return {
+      module: AppModule,
+      imports: [
+        StorageModule.forRoot({
+          default: 's3',
+          disks: {
+            s3: {
+              driver: DriverType.S3,
+              config: {},
             },
           },
         }),
