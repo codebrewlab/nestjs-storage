@@ -11,7 +11,9 @@ npm-debug.log
 .DS_Store
 
 # tests
+tests/data/*
 !tests/data/.gitkeep
+
 
 /coverage
 /.nyc_output

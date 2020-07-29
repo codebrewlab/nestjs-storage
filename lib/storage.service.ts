@@ -15,4 +15,8 @@ export class StorageService {
   getDisk<T extends Storage>(name?: string): T {
     return this.storageManager.disk<T>(name);
   }
+
+  registerDriver(name: string, driver: new (...args: any[]) => Storage): void {
+    this.storageManager.registerDriver(name, driver);
+  }
 }
