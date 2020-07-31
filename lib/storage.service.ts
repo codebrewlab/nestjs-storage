@@ -1,14 +1,16 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Storage, StorageManager } from '@slynova/flydrive';
 
-import { STORAGE_TOKEN } from './storage.constants';
+import { STORAGE_MODULE_OPTIONS } from './storage.constants';
 import { StorageModuleOptions } from './interfaces';
 
 @Injectable()
 export class StorageService {
   private storageManager: StorageManager;
 
-  constructor(@Inject(STORAGE_TOKEN) private options: StorageModuleOptions) {
+  constructor(
+    @Inject(STORAGE_MODULE_OPTIONS) private options: StorageModuleOptions,
+  ) {
     this.storageManager = new StorageManager(options);
   }
 

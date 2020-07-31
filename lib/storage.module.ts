@@ -1,9 +1,9 @@
-import { DynamicModule, Global, Module } from '@nestjs/common';
+import { DynamicModule, Module } from '@nestjs/common';
 
 import { StorageModuleOptions } from './interfaces';
 import { StorageCoreModule } from './storage-core.module';
+import { StorageModuleAsyncOptions } from './interfaces/storage-module-async-options';
 
-@Global()
 @Module({})
 export class StorageModule {
   static forRoot(options: StorageModuleOptions): DynamicModule {
@@ -13,7 +13,10 @@ export class StorageModule {
     };
   }
 
-  static forRootAsync(options: StorageModuleOptions) {
-    //
+  static forRootAsync(options: StorageModuleAsyncOptions): DynamicModule {
+    return {
+      module: StorageModule,
+      imports: [StorageCoreModule.forRootAsync(options)],
+    };
   }
 }
