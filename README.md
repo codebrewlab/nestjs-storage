@@ -31,22 +31,19 @@ import { Module } from '@nestjs/common'
 import { StorageModule, DriverType } from '@codebrew/nestjs-storage';
 
 @Module({
-  imports: [StorageModule.forRoot({
-    module: AppModule,
-    imports: [
-      StorageModule.forRoot({
-        default: 'local',
-        disks: {
-          local: {
-            driver: DriverType.LOCAL,
-            config: {
-              root: process.cwd(),
-            },
+  imports: [
+    StorageModule.forRoot({
+      default: 'local',
+      disks: {
+        local: {
+          driver: DriverType.LOCAL,
+          config: {
+            root: process.cwd(),
           },
         },
-      }),
-    ],
-  })]
+      },
+    }),
+  ],
 })
 export class AppModule {
   constructor(private storage: StorageServic) {
