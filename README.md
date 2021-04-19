@@ -28,7 +28,7 @@ $ npm i --save @slynova/flydrive-gcs
 ```typescript
 // app.module.ts
 import { Module } from '@nestjs/common'
-import { StorageModule, DriverType } from '@codebrew/nestjs-storage';
+import { StorageModule, DriverType, StorageService } from '@codebrew/nestjs-storage';
 
 @Module({
   imports: [
@@ -46,7 +46,7 @@ import { StorageModule, DriverType } from '@codebrew/nestjs-storage';
   ],
 })
 export class AppModule {
-  constructor(private storage: StorageServic) {
+  constructor(private storage: StorageService) {
     this.storage.getDisk().put('test.txt', 'text content');
   }
 }
