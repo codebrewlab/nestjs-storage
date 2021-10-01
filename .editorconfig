@@ -1,0 +1,11 @@
+[*]
+charset = utf-8
+end_of_line =crlf
+
+[*.ts]
+indent_size = 2
+indent_style = space
+
+[*.md]
+indent_size = 2
+indent_style = space
