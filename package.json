@@ -1,6 +1,6 @@
 {
   "name": "@codebrew/nestjs-storage",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Nestjs file system wrapping flydrive",
   "author": "David Kwon",
   "license": "MIT",
