@@ -6,7 +6,6 @@
   "license": "MIT",
   "url": "https://github.com/codebrewlab/nestjs-storage",
   "scripts": {
-    "jest": "jest",
     "build": "rimraf -rf dist && tsc -p ./tsconfig.lib.json",
     "lint": "eslint 'lib/**/*.ts' --fix",
     "prepublish:npm": "npm run build",
@@ -17,7 +16,6 @@
     "prerelease": "npm run build",
     "release": "release-it"
   },
-  "dependencies": {},
   "devDependencies": {
     "@commitlint/cli": "^9.1.1",
     "@commitlint/config-angular": "^9.1.1",
@@ -49,7 +47,6 @@
   "peerDependencies": {
     "@nestjs/common": "^6.10.0 || ^7.0.0 || ^8.0.0",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^6.0.0",
     "@slynova/flydrive": "^1.0.2",
     "@slynova/flydrive-gcs": "^1.0.2",
     "@slynova/flydrive-s3": "^1.0.2"
